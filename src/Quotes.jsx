@@ -32,10 +32,6 @@ export default function Quotes() {
         fetchJoke();
     }, []);
 
-    if (loading) {
-        return <p>Loading joke...</p>;
-    }
-
     return (
         <div className="wrapper">
 
@@ -44,8 +40,10 @@ export default function Quotes() {
             <p>Click the button to fetch a fresh one.</p>
 
             <button onClick={fetchJoke}>
-                Fetch  Joke
+                Fetch Joke
             </button>
+
+            {loading && <p>Loading joke...</p>}
 
             {randomJoke && (
                 <div>
