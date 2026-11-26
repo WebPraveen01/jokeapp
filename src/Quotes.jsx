@@ -12,9 +12,7 @@ export default function Quotes() {
             setLoading(true);
             setError(null);
 
-            const response = await fetch(
-                'https://official-joke-api.appspot.com/random_joke'
-            );
+            const response = await fetch('/api/random-joke');
 
             if (!response.ok) {
                 throw new Error("Failed to fetch joke");
