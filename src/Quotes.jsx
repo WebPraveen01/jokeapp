@@ -43,7 +43,7 @@ export default function Quotes() {
                 Fetch joke
             </button>
 
-            {loading && <p>Loading joke...</p>}
+            {loading && <p>Fetching...</p>}
 
             {randomJoke && (
                 <div>
