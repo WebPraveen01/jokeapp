@@ -40,7 +40,7 @@ export default function Quotes() {
             <p>Click the button to fetch a fresh one.</p>
 
             <button onClick={fetchJoke}>
-                Fetch Joke
+                Fetch joke
             </button>
 
             {loading && <p>Loading joke...</p>}
