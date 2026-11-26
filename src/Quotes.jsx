@@ -5,24 +5,26 @@ export default function Quotes() {
 
     const [randomJoke, setRandomJoke] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     const fetchJoke = async () => {
         try {
             setLoading(true);
+            setError(null);
 
             const response = await fetch(
                 'https://official-joke-api.appspot.com/random_joke'
             );
 
             if (!response.ok) {
-                throw new Error('Failed to fetch joke');
+                throw new Error("Failed to fetch joke");
             }
 
             const data = await response.json();
             setRandomJoke(data);
 
-        } catch (error) {
-            console.log(error);
+        } catch (err) {
+            setError("Could not fetch a joke. Try again.");
         } finally {
             setLoading(false);
         }
@@ -44,8 +46,10 @@ export default function Quotes() {
                 onClick={fetchJoke}
                 disabled={loading}
             >
-                {loading ? "Fetching..." : "Fetch joke"}
+                {loading ? "Fetching..." : error ? "Try again" : "Fetch joke"}
             </button>
+
+            {error && <p>{error}</p>}
 
             {loading && <p>Fetching...</p>}
 
