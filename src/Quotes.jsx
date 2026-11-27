@@ -44,7 +44,7 @@ export default function Quotes() {
                 onClick={fetchJoke}
                 disabled={loading}
             >
-                {loading ? "Fetching..." : error ? "Try again" : "Fetch joke"}
+                Fetch joke
             </button>
 
             {error && <p>{error}</p>}
